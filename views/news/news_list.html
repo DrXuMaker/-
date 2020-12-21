@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/static/sweetalert/sweetalert.css">
+    <script src="/static/sweetalert/ions_alert.js"></script>
+    <script src="/static/sweetalert/sweetalert.min.js"></script>
+  </head>
+  
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">内容管理</a>
+        <a>
+          <cite>新闻列表</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so">
+          <input type="text" id="username" value="{{.kw}}" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+          <button id="search_btn" class="layui-btn"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+      </div>
+      <xblock>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <button class="layui-btn" onclick="x_admin_show('编写新闻','{{urlfor "NewController.ToAddNews"}}',1000,500)"><i class="layui-icon"></i>编写新闻</button>
+        <span class="x-right" style="line-height:40px">共有数据：{{.Count}} 条</span>
+      </xblock>
+      <table class="layui-table">
+        <thead>
+          <tr>
+            <th>
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary" ><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>新闻标题</th>
+            <th>新闻栏目</th>
+            <th>编写时间</th>
+            <th>状态</th>
+            <th>操作</th></tr>
+        </thead>
+        <tbody>
+        {{if  eq .Count 0}}
+        {{else}}
+        {{range .news}}
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" news_id="{{.Id}}"><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>{{.Title}}</td>
+            <td>{{.Category.Name}}</td>
+            <td>{{date .CreateTime "Y-m-d H:m:s"}}</td>
+            <td class="td-status">
+              <input type="hidden" id="is_active_val" value="{{.IsActive}}">
+              {{if eq .IsActive 1}}
+                <span class="layui-btn layui-btn-normal layui-btn-mini">已启用
+                </span>
+                {{else if eq .IsActive 0}}
+                  <span class="layui-btn layui-btn-danger layui-btn-mini">已停用
+                  </span>
+              {{end}}
+            </td>
+            <td class="td-manage">
+              {{if eq .IsActive 1}}
+                <a onclick="is_active(this,'{{.Id}}')" href="javascript:;"  title="停用">
+                <i class="layui-icon">&#xe601;</i>
+                </a>
+                {{else if eq .IsActive 0}}
+                  <a onclick="is_active(this,'{{.Id}}')" href="javascript:;"  title="启用" >
+                  <i class="layui-icon">&#xe62f;</i>
+                  </a>
+              {{end}}
+
+              <a onclick="do_user('编辑',this,'{{.Id}}','{{urlfor "NewController.ToEdit"}}',1000,500)" title="编辑"  href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'{{.Id}}')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>`
+            </td>
+          </tr>
+        {{end}}
+        {{end}}
+        </tbody>
+      </table>
+      <div class="page">
+          <span>总页数：{{.TotalPage}}</span>
+          {{/*首页和上一页*/}}
+          <a class="prev" href="{{urlfor "NewController.List"}}?page=1">首页</a>
+          <a class="prev" href="{{urlfor "NewController.List"}}?page={{.PrePage}}&kw={{$.kw}}">上一页</a>
+
+
+          {{/*中间页码*/}}
+          {{range .pagemap.pages}}
+              {{if eq $.pagemap.currpage .}}
+                <a style="border: 0px #E2E2E2; padding: 0;" href="{{urlfor "NewController.List"}}?page={{.}}"><span class="current">{{.}}</span></a>
+              {{else }}
+                <a style="border: 0px #E2E2E2; padding: 0;" href="{{urlfor "NewController.List"}}?page={{.}}"><span>{{.}}</span></a>
+          {{end}}
+          {{end}}
+
+          {{/*尾页和下一页*/}}
+          <a class="next" href="{{urlfor "NewController.List"}}?page={{.NextPage}}&kw={{$.kw}}">下一页</a>
+          <a class="next" href="{{urlfor "NewController.List"}}?page={{.TotalPage}}">尾页</a>
+      </div>
+    </div>
+
+    <script>
+
+       /*用户-停用与启用*/
+      function is_active(obj, id) {
+        let is_active_val = document.getElementById("is_active_val").value;
+        if (is_active_val == 1) {
+          layer.confirm('确认要停用吗？', function (index) {
+            layer.close(index)
+            $.ajax({
+              url: "{{urlfor "NewController.IsActive"}}",
+              type: "POST",
+              data: {
+                "is_active": is_active_val,
+                "id": id
+              },
+              success: function (data) {
+                ions_alert.alertSuccessToast(data['msg']);
+                setTimeout(reload_list,1000);
+              },
+              fail: function (data) {
+                alert(data);
+                ions_alert.alertErrorToast(data['msg']);
+                setTimeout(reload_list,1000);
+              }
+            })
+          });
+        }
+
+        if(is_active_val == 0){
+          layer.confirm('确认要启用吗？', function (index) {
+           layer.close(index)
+            $.ajax({
+              url: "{{urlfor "NewController.IsActive"}}",
+              type: "POST",
+              data: {
+                "is_active": is_active_val,
+                "id": id
+              },
+              success: function (data) {
+                ions_alert.alertSuccessToast(data['msg']);
+                setTimeout(reload_list,1000);
+              },
+              fail: function (data) {
+                ions_alert.alertErrorToast("调试失败");
+                setTimeout(reload_list,1000);
+              }
+            })
+          });
+        }
+      }
+      function reload_list(){
+        window.location.href="{{urlfor "NewController.List"}}";
+      }
+
+      /*新闻-删除*/
+      function member_del(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+            layer.close(index);
+            $.ajax({
+              url:"{{urlfor "NewController.Delete"}}",
+              type:"GET",
+              data:{
+                "id":id,
+              },
+              success: function(data){
+                  ions_alert.alertSuccessToast(data["msg"]);
+                  setTimeout(reload_list,1000)
+              },
+              fail: function(data){
+                  ions_alert.alertErrorToast("无法删除");
+                  setTimeout(reload_list,1000)
+              }
+            })
+          });
+      }
+
+      /*新闻-重置信息*/
+      function do_user(title,obj,id,url,w,h){
+        if (title == null || title == '') {
+          title=false;
+        };
+        if (url == null || url == '') {
+          url="404.html";
+        };
+        if (w == null || w == '') {
+          w=($(window).width()*0.9);
+        };
+        if (h == null || h == '') {
+          h=($(window).height() - 50);
+        };
+        layer.open({
+          type: 2,
+          area: [w+'px', h +'px'],
+          fix: false, //不固定
+          maxmin: true,
+          shadeClose: true,
+          shade:0.4,
+          title: title,
+          content: url + "?id=" + id,
+        });
+      }
+
+
+
+
+       /*新闻-删除信息*/
+      function delAll (argument) {
+
+        let ids = "";
+        let i = 0;
+        $(".layui-form-checked").each(function() {
+            let id = $(this).attr("news_id");
+            if(i == 0){
+              ids = id;
+            }else{
+              ids = ids + "," + id;
+            }
+            i++;
+        });
+
+        layer.confirm('确认要批量删除吗？', function (index) {
+          layer.close(index)
+          $.ajax({
+            url: "{{urlfor "NewController.MuliDel"}}",
+            type: "POST",
+            data: {
+              "ids": JSON.stringify(ids)
+              },
+              success: function (data) {
+                if(data["code"] == 200){
+                  ions_alert.alertSuccessToast(data['msg']);
+                  setTimeout(reload_list,1000);
+                }else{
+                  ions_alert.alertErrorToast("批量删除失败");
+                  setTimeout(reload_list,1000);
+                }
+              },
+              fail: function (data) {
+                alert(data);
+                ions_alert.alertErrorToast("批量删除失败");
+                setTimeout(reload_list,1000);
+              }
+            })
+          });
+      }
+
+      let search_btn = document.getElementById("search_btn")
+      search_btn.onclick = function(ev) {
+        ev.preventDefault();
+        let kw = document.getElementById("username").value;
+        window.location.href = "{{urlfor "NewController.List"}}?kw=" + kw;
+      }
+
+    </script>
+  </body>
+
+</html>

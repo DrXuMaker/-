@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+    <!--<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>-->
+      <!--<script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>-->
+      <!--会冲突-->
+      <!--<script type="text/javascript" src="./js/xadmin.js"></script>-->
+
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+      <link rel="stylesheet" href="/static/css/bootstrapStyle/bootstrapStyle.css" type="text/css">
+      <script type="text/javascript" src="/static/js/ztree/jquery.min.js"></script>
+      <script type="text/javascript" src="/static/js/ztree/jquery.ztree.core.js"></script>
+      <script type="text/javascript" src="/static/js/ztree/jquery.ztree.excheck.js"></script>
+      <script type="text/javascript" src="/static/js/ztree/jquery.ztree.exedit.js"></script>
+
+
+
+
+  </head>
+  
+  <body>
+    <div class="x-body">
+        <form class="layui-form" action="" lay-filter="component-form-group">
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色名称</label>
+                <div class="layui-input-inline" style="width:200px;">
+                    <input type="text" value="{{.role.RoleName}}" autocomplete="off" class="layui-input" readonly="readonly">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色描述</label>
+                <div class="layui-input-inline" style="width:200px;">
+                    <input type="text" value="{{.role.RoleName}}" autocomplete="off" class="layui-input" readonly="readonly">
+                </div>
+            </div>
+
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限树</label>
+                <div class="layui-input-block">
+                    <ul id="treeDemo" class="ztree"></ul>
+                </div>
+
+                <input type="hidden" id="role_id" value="{{.role.Id}}">
+                <input type="hidden" id="auth_ids" value="">
+                <div class="layui-form-item ">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" >
+                            <button class="layui-btn" id="role_auth_add_btn">
+                                立即提交
+                            </button>
+                            <a href="#" class="layui-btn layui-btn-primary">返回</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <SCRIPT type="text/javascript">
+        <!--
+
+        $.ajax({
+            url:"{{urlfor "Rolecontroller.GetAuth"}}",
+            type:"GET",
+            data:{},
+            success: function (data){
+                let zNodes = data["auth_arr_map"];
+                let auth_ids_has = data["auth_ids_has"];
+                let setting = {
+                    view: {
+                        selectedMulti: false
+                    },
+                    check: {
+                        enable: true
+                    },
+                    data: {
+                        simpleData: {
+                            enable: true
+                        }
+                    },
+                    edit: {
+                        enable: true
+                    },
+                    callback: {
+                        beforeCheck: true,
+                        onCheck: check_data
+                    }
+                };
+                $(document).ready(function(){
+                    $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+
+                    let zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                    for(let i =0 ;i< auth_ids_has.length;i++){
+                        let node = zTree.getNodeByParam("id",auth_ids_has[i]);
+                        node.checked = true
+                        zTree.selectNode(node,true)
+                    }
+                });
+            },
+            failed: function (data){
+                alert("失败")
+            }
+        });
+
+
+        let role_auth_add_btn = document.getElementById("role_auth_add_btn")
+        role_auth_add_btn.onclick = function (ev){
+            let role_id = document.getElementById("role_id").value;
+            let aut_ids = document.getElementById("auth_ids").value;
+            $.ajax({
+                url:"{{urlfor "Rolecontroller.DoRoleAuth"}}",
+                type:"POST",
+                data:{
+                    "role_id":role_id,
+                    "auth_ids":aut_ids
+                },
+                success: function(data){
+                    if (data["code"] == 200){
+                        alert(data["msg"]);
+                        //获取frame索引
+                        let index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前frame
+                        parent.layer.close(index);
+                        window.location.href="{{urlfor "Rolecontroller.List"}}";
+                    }else{
+                        alert("操作失败")
+                        //获取frame索引
+                        let index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前frame
+                        parent.layer.close(index);
+                        window.location.href="{{urlfor "Rolecontroller.List"}}";
+                    }
+                },
+                failed: function(data){
+                    alert(data)
+                }
+            })
+            alert("稍等...")
+        }
+
+
+        function check_data(){
+            let zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            let nodes = zTree.getCheckedNodes(true);
+            let auth_ids = document.getElementById("auth_ids")
+            let ids = "";
+            for(let k = 0;k < nodes.length; k++){
+                let id = nodes[k].id;
+                if (k == 0){
+                    ids = id;
+                }else(
+                    ids = ids + "," + id
+                )
+            }
+            auth_ids.value = ids;
+        }
+
+        //-->
+    </SCRIPT>
+  </body>
+
+</html>

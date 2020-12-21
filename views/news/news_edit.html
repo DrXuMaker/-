@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/static/sweetalert/sweetalert.css">
+    <script src="/static/sweetalert/ions_alert.js"></script>
+    <script src="/static/sweetalert/sweetalert.min.js"></script>
+
+
+    <link rel="stylesheet" href=" /static/froala_editor/css/froala_editor.css">
+    <link rel="stylesheet" href="/static/froala_editor/css/froala_style.css">
+    <link rel="stylesheet" href="/static/froala_editor/css/plugins/code_view.css">
+    <link rel="stylesheet" href="/static/froala_editor/css/plugins/image_manager.css">
+    <link rel="stylesheet" href="/static/froala_editor/css/plugins/image.css">
+    <link rel="stylesheet" href="/static/froala_editor/css/plugins/table.css">
+    <link rel="stylesheet" href="/static/froala_editor/css/plugins/video.css">
+</head>
+
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
+                <span class="x-red">*</span>新闻标题
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="title" lay-verify="required"
+                       autocomplete="off" class="layui-input" value="{{.news_data.Title}}">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>新闻标题不可重复
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+                <span class="x-red">*</span>所属栏目
+            </label>
+            <div class="layui-input-inline" style="width: 220px;">
+                <select  id="category">
+                    <option value="{{.news_data.Category.Id}}">{{.news_data.Category.Name}}</option>
+                    {{range .categories}}
+                        <option value="{{.Id}}" >{{.Name}}</option>
+                    {{end}}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+                <span class="x-red">*</span>新闻内容
+            </label>
+            <div class="layui-input-inline">
+                <textarea id="content" cols="30" rows="10">{{.news_data.Content}}</textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+                <span class="x-red">*</span>是否启用
+            </label>
+            <div class="layui-input-inline">
+                <input name="is_active" id="is_active_1" type="radio" value="1" checked="checked" title="启用"/>
+                <input name="is_active" id="is_active_0" type="radio" value="0" title="停用"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <input type="hidden" id="news_id" value="{{.news_data.Id}}">
+            <label for="L_repass" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" type="submit">
+                提交
+            </button>
+        </div>
+    </form>
+</div>
+</form>
+</div>
+
+<script type="text/javascript" src="/static/froala_editor/js/froala_editor.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/align.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/code_beautifier.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/code_view.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/draggable.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/image.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/image_manager.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/link.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/lists.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/paragraph_format.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/paragraph_style.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/table.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor/js/plugins/video.min.js"></script>
+
+<script>
+    $(function  () {
+        let editor = new FroalaEditor("#content",{
+            width:500,
+            height:200,
+            placeholderText:"请输入新闻内容",
+            charCounterCount:true,
+            language:"zh_cn",
+            imageUploadMethod:"POST",
+            imageUploadURL:"{{urlfor "NewController.UpLoadImg"}}",
+            toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat', 'align','color','fontSize','insertImage','insertTable','undo', 'redo'],
+            events:{
+                initialized:function () {
+                    const editor = this;
+                    this.el.closest('form').addEventListener('submit', function (e) {
+                        let content = editor.$oel.val();
+                        let title = document.getElementById("title").value;
+                        let category_id = document.getElementById("category").value;
+                        let is_active = $("input[name='is_active']:checked").val();
+                        let news_id = document.getElementById("news_id").value;
+
+                        if (category_id == 0){
+                            alert("请选择栏目");
+                            return
+
+                        }
+
+                        if (title.length == 0){
+                            alert("请填写标题");
+                            return
+                        }
+
+                        $.ajax({
+                            url:"{{urlfor "NewController.DoEdit"}}",
+                            type:"POST",
+                            data:{
+                                "content":content,
+                                "title":title,
+                                "category_id":category_id,
+                                "is_active":is_active,
+                                "news_id": news_id,
+                            },
+                            success:function (data) {
+                                let code = data["code"];
+                                if(code == 200){
+                                    alert(data["msg"]);
+                                    // 获得frame索引
+                                    let index = parent.layer.getFrameIndex(window.name);
+                                    //关闭当前frame
+                                    parent.layer.close(index);
+                                    window.location.href = "{{urlfor "NewsController.List"}}"
+                                }else {
+                                    alert(data["msg"]);
+                                }
+                            },
+                            fail:function (data) {
+                                alert(data)
+                            }
+                        });
+                        alert("稍等...");
+                    })
+
+                }
+            }
+
+        });
+
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static//css/font.css">
+    <link rel="stylesheet" href="/static//css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static//lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static//js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="/static/sweetalert/sweetalert.css">
+    <script src="/static/sweetalert/ions_alert.js"></script>
+    <script src="/static/sweetalert/sweetalert.min.js"></script>
+</head>
+
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">个人中心</a>
+        <a>
+          <cite>消息通知</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so">
+            <input type="text" id="username" value="{{.kw}}"  placeholder="请输入消息标题" autocomplete="off" class="layui-input">
+            <button id="search_btn" class="layui-btn"><i class="layui-icon">&#xe615;</i></button>
+            <button id="clear_btn" class="layui-btn"><i class="layui-icon" style="line-height:30px">ဂ</i></button>
+        </form>
+    </div>
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>消息标题</th>
+            <th>消息内容</th>
+            <th>消息分类</th>
+            <th>已读</th>
+            <th>操作</th></tr>
+        </thead>
+        <tbody>
+        {{range .nofities}}
+            <tr>
+                <td><a style="color: blue" href="{{urlfor "HomeController.ReadNotify"}}?id={{.Id}}">{{.Title}}</a></td>
+                <td>{{.Content}}</td>
+                <td>
+                    {{if eq .Flag 1}}
+                        车辆逾期
+                    {{else if eq .Flag 2}}
+                        所有通知
+                    {{end}}
+                </td>
+
+                <td>
+                    {{if eq .ReadTag 0}}
+                        未读
+                    {{else if eq .ReadTag 1}}
+                        已读
+                    {{end}}
+                </td>
+
+
+                <td class="td-manage">
+                    <a title="去阅读" href="{{urlfor "HomeController.ReadNotify"}}?id={{.Id}}">
+                        <i class="layui-icon">&#xe631;</i>
+                    </a>
+                </td>
+            </tr>
+        {{end}}
+
+
+        </tbody>
+    </table>
+
+    <div class="page">
+        <div>
+            <span>总页数:{{.countPage}}</span>
+            {{/*首页和上一页*/}}
+            <a class="prev" href="{{urlfor "HomeController.NotifyList"}}?page={{.page_map.firstpage}}&kw={{.kw}}">首页</a>
+            <a class="prev" href="{{urlfor "HomeController.NotifyList"}}?page={{.prePage}}&kw={{.kw}}">上一页</a>
+
+            {{/*中间页码*/}}
+            {{range .page_map.num_pages}}
+                {{if eq $.page_map.currpage .}}
+                    <a style="border: 0px  #E2E2E2;padding: 0" href="{{urlfor "HomeController.NotifyList"}}?page={{.}}&kw={{$.kw}}"><span class="current">{{.}}</span></a>
+                {{else}}
+                    <a style="border: 0px #E2E2E2;padding: 0" href="{{urlfor "HomeController.NotifyList"}}?page={{.}}&kw={{$.kw}}"><span>{{.}}</span></a>
+                {{end}}
+
+            {{end}}
+
+
+            {{/*下一页和尾页*/}}
+            <a class="next" href="{{urlfor "HomeController.NotifyList"}}?page={{.nextPage}}&kw={{.kw}}">下一页</a>
+            <a class="next" href="{{urlfor "HomeController.NotifyList"}}?page={{.page_map.lastpage}}&kw={{.kw}}">尾页</a>
+        </div>
+    </div>
+
+</div>
+<script>
+
+    let search_btn = document.getElementById("search_btn");
+    search_btn.onclick = function (ev) {
+        ev.preventDefault();
+        let kw = document.getElementById("username").value;
+        window.location.href = "{{urlfor "HomeController.NotifyList"}}?kw=" + kw
+    };
+
+
+    let clear_btn = document.getElementById("clear_btn");
+
+    clear_btn.onclick = function (ev) {
+        ev.preventDefault();
+        window.location.href = "{{urlfor "HomeController.NotifyList"}}"
+    }
+
+
+</script>
+</body>
+
+</html>

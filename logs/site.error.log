@@ -1,0 +1,279 @@
+2020/11/19 16:42:47.554 [E] [server.go:2843]  template: author/auth_list.html:78:22: executing "author/auth_list.html" at <.auths.AuthName>: can't evaluate field auths in type author.Auth
+2020/11/19 16:45:00.197 [E] [server.go:2843]  template: author/auth_list.html:80:16: executing "author/auth_list.html" at <.CreateTime>: CreateTime has arguments but cannot be invoked as function
+2020/11/19 16:49:20.161 [E] [controller.go:304]  parse template err: author/auth_list.html template: author/auth_list.html:211: unexpected EOF
+2020/11/21 16:51:51.369 [E] [server.go:2843]  template: index.html:53:34: executing "index.html" at <.trees.Children>: can't evaluate field trees in type author.Tree
+2020/11/21 16:51:56.842 [E] [server.go:2843]  template: index.html:53:34: executing "index.html" at <.trees.Children>: can't evaluate field trees in type author.Tree
+2020/11/21 16:51:57.582 [E] [server.go:2843]  template: index.html:53:34: executing "index.html" at <.trees.Children>: can't evaluate field trees in type author.Tree
+2020/11/21 16:52:48.673 [E] [server.go:2843]  template: index.html:53:34: executing "index.html" at <.trees.Children>: can't evaluate field trees in type author.Tree
+2020/11/21 16:52:49.581 [E] [server.go:2843]  template: index.html:53:34: executing "index.html" at <.trees.Children>: can't evaluate field trees in type author.Tree
+2020/11/21 16:54:25.456 [E] [server.go:2843]  template: index.html:53:34: executing "index.html" at <.trees.Children>: can't evaluate field trees in type author.Tree
+2020/11/24 19:10:43.159 [E] [server.go:2843]  template: user/my_centre.html:35:71: executing "user/my_centre.html" at <.user.UserName>: can't evaluate field UserName in type interface {}
+2020/11/25 16:57:20.317 [E] [server.go:2843]  template: user/salary_slip.html:62:23: executing "user/salary_slip.html" at <.CreateTime>: invalid value; expected time.Time
+2020/11/25 16:58:12.483 [E] [server.go:2843]  template: user/salary_slip.html:62:23: executing "user/salary_slip.html" at <.CreateTime>: invalid value; expected time.Time
+2020/11/25 16:58:22.108 [E] [server.go:2843]  template: user/salary_slip.html:62:23: executing "user/salary_slip.html" at <.CreateTime>: invalid value; expected time.Time
+2020/11/25 16:58:58.349 [E] [server.go:2843]  template: user/salary_slip.html:62:23: executing "user/salary_slip.html" at <.CreateTime>: invalid value; expected time.Time
+2020/11/26 18:29:47.457 [E] [server.go:2843]  template: finance/finance_list.html:69:17: executing "finance/finance_list.html" at <.Count>: Count is not a method but has arguments
+2020/11/26 18:31:23.970 [E] [server.go:2843]  template: finance/finance_list.html:69:17: executing "finance/finance_list.html" at <.Count>: Count is not a method but has arguments
+2020/11/26 18:32:46.831 [E] [server.go:2843]  template: finance/finance_list.html:69:17: executing "finance/finance_list.html" at <.Count>: Count is not a method but has arguments
+2020/11/26 19:41:43.819 [E] [server.go:2843]  template: index.html:29:60: executing "index.html" at <.user.UserName>: can't evaluate field UserName in type interface {}
+2020/11/26 19:44:05.360 [E] [server.go:2843]  template: index.html:29:60: executing "index.html" at <.user.UserName>: can't evaluate field UserName in type interface {}
+2020/11/26 19:45:07.560 [E] [server.go:2843]  template: index.html:29:68: executing "index.html" at <.user.UserName>: can't evaluate field UserName in type interface {}
+2020/11/27 11:57:01.115 [E] [value.go:475]  <nil>
+2020/11/27 12:00:12.762 [E] [value.go:475]  <nil>
+2020/11/27 12:02:27.131 [E] [value.go:475]  <nil>
+2020/11/27 12:04:31.642 [E] [value.go:475]  <nil>
+2020/11/27 12:06:57.584 [E] [value.go:475]  <nil>
+2020/11/27 12:08:13.980 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.122 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.168 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.239 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.300 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.336 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.382 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.418 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.461 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.499 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.554 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.592 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.629 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.665 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.704 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.746 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.791 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.828 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.874 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.921 [E] [value.go:475]  <nil>
+2020/11/27 12:08:14.960 [E] [value.go:475]  <nil>
+2020/11/27 12:08:15.006 [E] [value.go:475]  <nil>
+2020/11/27 12:08:15.053 [E] [value.go:475]  <nil>
+2020/11/27 12:08:15.100 [E] [value.go:475]  <nil>
+2020/11/27 17:05:03.189 [E] [value.go:475]  <nil>
+2020/11/27 17:05:03.384 [E] [value.go:475]  <nil>
+2020/11/27 17:05:03.490 [E] [value.go:475]  <nil>
+2020/11/27 17:05:03.562 [E] [value.go:475]  <nil>
+2020/11/27 17:05:03.634 [E] [value.go:475]  <nil>
+2020/11/27 17:05:03.727 [E] [value.go:475]  <nil>
+2020/11/27 17:05:03.809 [E] [value.go:475]  <nil>
+2020/11/27 17:05:03.870 [E] [value.go:475]  <nil>
+2020/11/27 17:05:03.964 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.047 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.129 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.201 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.284 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.356 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.438 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.521 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.615 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.722 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.850 [E] [value.go:475]  <nil>
+2020/11/27 17:05:04.933 [E] [value.go:475]  <nil>
+2020/11/27 17:05:05.015 [E] [value.go:475]  <nil>
+2020/11/27 17:05:05.087 [E] [value.go:475]  <nil>
+2020/11/27 17:05:05.180 [E] [value.go:475]  <nil>
+2020/11/27 17:05:05.388 [E] [value.go:475]  <nil>
+2020/11/27 17:05:06.765 [E] [value.go:475]  <nil>
+2020/11/27 17:05:06.857 [E] [value.go:475]  <nil>
+2020/11/27 17:05:06.940 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.022 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.105 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.221 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.334 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.386 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.457 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.529 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.611 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.682 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.753 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.860 [E] [value.go:475]  <nil>
+2020/11/27 17:05:07.942 [E] [value.go:475]  <nil>
+2020/11/27 17:05:08.014 [E] [value.go:475]  <nil>
+2020/11/27 17:05:08.085 [E] [value.go:475]  <nil>
+2020/11/27 17:05:08.168 [E] [value.go:475]  <nil>
+2020/11/27 17:05:08.240 [E] [value.go:475]  <nil>
+2020/11/27 17:05:08.300 [E] [value.go:475]  <nil>
+2020/11/27 17:05:08.372 [E] [value.go:475]  <nil>
+2020/11/27 17:05:08.465 [E] [value.go:475]  <nil>
+2020/11/27 17:05:08.537 [E] [value.go:475]  <nil>
+2020/11/27 17:05:08.609 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.204 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.287 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.359 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.452 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.524 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.606 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.701 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.795 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.877 [E] [value.go:475]  <nil>
+2020/11/27 17:05:12.960 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.054 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.148 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.230 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.302 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.373 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.492 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.620 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.714 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.792 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.885 [E] [value.go:475]  <nil>
+2020/11/27 17:05:13.968 [E] [value.go:475]  <nil>
+2020/11/27 17:05:14.052 [E] [value.go:475]  <nil>
+2020/11/27 17:05:14.148 [E] [value.go:475]  <nil>
+2020/11/27 17:05:14.228 [E] [value.go:475]  <nil>
+2020/11/27 17:07:33.992 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.107 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.219 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.300 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.360 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.432 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.510 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.583 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.656 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.740 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.811 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.894 [E] [value.go:475]  <nil>
+2020/11/27 17:07:34.962 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.023 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.114 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.198 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.302 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.394 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.496 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.570 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.650 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.722 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.815 [E] [value.go:475]  <nil>
+2020/11/27 17:07:35.921 [E] [value.go:475]  <nil>
+2020/11/27 17:09:44.231 [E] [value.go:475]  <nil>
+2020/11/27 17:09:44.389 [E] [value.go:475]  <nil>
+2020/11/27 17:09:44.496 [E] [value.go:475]  <nil>
+2020/11/27 17:09:44.579 [E] [value.go:475]  <nil>
+2020/11/27 17:09:44.661 [E] [value.go:475]  <nil>
+2020/11/27 17:09:44.732 [E] [value.go:475]  <nil>
+2020/11/27 17:09:44.815 [E] [value.go:475]  <nil>
+2020/11/27 17:09:44.892 [E] [value.go:475]  <nil>
+2020/11/27 17:09:44.976 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.059 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.167 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.261 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.354 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.448 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.567 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.639 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.722 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.804 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.887 [E] [value.go:475]  <nil>
+2020/11/27 17:09:45.958 [E] [value.go:475]  <nil>
+2020/11/27 17:09:46.041 [E] [value.go:475]  <nil>
+2020/11/27 17:09:46.111 [E] [value.go:475]  <nil>
+2020/11/27 17:09:46.179 [E] [value.go:475]  <nil>
+2020/11/27 17:09:46.266 [E] [value.go:475]  <nil>
+2020/11/27 17:17:43.526 [E] [value.go:475]  <nil>
+2020/11/27 17:17:43.682 [E] [value.go:475]  <nil>
+2020/11/27 17:17:43.803 [E] [value.go:475]  <nil>
+2020/11/27 17:17:43.875 [E] [value.go:475]  <nil>
+2020/11/27 17:17:43.946 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.003 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.086 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.157 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.239 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.301 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.382 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.465 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.537 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.629 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.727 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.810 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.878 [E] [value.go:475]  <nil>
+2020/11/27 17:17:44.971 [E] [value.go:475]  <nil>
+2020/11/27 17:17:45.058 [E] [value.go:475]  <nil>
+2020/11/27 17:17:45.147 [E] [value.go:475]  <nil>
+2020/11/27 17:17:45.237 [E] [value.go:475]  <nil>
+2020/11/27 17:17:45.320 [E] [value.go:475]  <nil>
+2020/11/27 17:17:45.398 [E] [value.go:475]  <nil>
+2020/11/27 17:17:45.486 [E] [value.go:475]  <nil>
+2020/11/27 17:20:05.896 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.119 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.226 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.300 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.376 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.458 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.552 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.623 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.694 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.777 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.852 [E] [value.go:475]  <nil>
+2020/11/27 17:20:06.935 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.017 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.100 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.183 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.266 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.338 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.416 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.499 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.570 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.646 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.728 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.797 [E] [value.go:475]  <nil>
+2020/11/27 17:20:07.867 [E] [value.go:475]  <nil>
+2020/11/27 17:21:17.885 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.066 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.212 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.295 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.378 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.461 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.544 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.623 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.705 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.788 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.871 [E] [value.go:475]  <nil>
+2020/11/27 17:21:18.953 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.036 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.118 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.233 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.420 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.504 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.585 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.669 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.750 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.833 [E] [value.go:475]  <nil>
+2020/11/27 17:21:19.950 [E] [value.go:475]  <nil>
+2020/11/27 17:21:20.035 [E] [value.go:475]  <nil>
+2020/11/27 17:21:20.117 [E] [value.go:475]  <nil>
+2020/11/27 17:22:27.892 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.037 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.073 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.155 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.227 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.274 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.317 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.366 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.414 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.460 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.507 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.554 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.601 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.648 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.693 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.742 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.789 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.825 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.872 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.919 [E] [value.go:475]  <nil>
+2020/11/27 17:22:28.956 [E] [value.go:475]  <nil>
+2020/11/27 17:22:29.009 [E] [value.go:475]  <nil>
+2020/11/27 17:22:29.060 [E] [value.go:475]  <nil>
+2020/11/27 17:22:29.106 [E] [value.go:475]  <nil>
+2020/11/27 20:21:17.068 [E] [server.go:2843]  template: finance/finance_echart_list.html:68:13: executing "finance/finance_echart_list.html" at <eq .Count 0>: error calling eq: invalid type for comparison
+2020/11/27 21:11:22.199 [E] [value.go:475]  <nil>
+2020/11/27 21:14:32.471 [E] [value.go:475]  <nil>
+2020/11/28 16:21:02.827 [E] [server.go:2843]  template: news/news_list.html:62:14: executing "news/news_list.html" at <eq .Count 0>: error calling eq: invalid type for comparison
+2020/11/28 16:21:24.102 [E] [server.go:2843]  template: news/news_list.html:62:14: executing "news/news_list.html" at <eq .Count 0>: error calling eq: invalid type for comparison
+2020/11/28 17:55:44.152 [E] [server.go:2843]  template: news/news_list.html:70:27: executing "news/news_list.html" at <.Category.Des>: can't evaluate field Des in type *news.Category
+2020/11/28 20:10:48.569 [E] [server.go:2843]  template: news/news_edit.html:44:74: executing "news/news_edit.html" at <.news_data.Name>: can't evaluate field Name in type interface {}
+2020/12/02 16:59:50.084 [E] [server.go:2843]  template: index.html:29:84: executing "index.html" at <.user.UserName>: can't evaluate field UserName in type interface {}
+2020/12/21 16:10:18.787 [E] [value.go:476]  <nil>
+2020/12/21 16:16:24.839 [E] [value.go:476]  <nil>
+2020/12/21 16:16:24.843 [E] [server.go:2843]  template: news/news_show.html:60:14: executing "news/news_show.html" at <eq .Count 0>: error calling eq: invalid type for comparison
+2020/12/21 16:47:07.575 [E] [template.go:176]  parse template err: news/news_doShow.html template: news/news_doShow.html:8: function "new" not defined
+2020/12/21 16:47:34.723 [E] [template.go:176]  parse template err: news/news_doShow.html template: news/news_doShow.html:8: function "data" not defined
+2020/12/21 16:50:44.440 [E] [server.go:2843]  template: news/news_doShow.html:8:2: executing "news/news_doShow.html" at <str2html>: wrong number of args for str2html: want 1 got 0
